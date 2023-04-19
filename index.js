@@ -1,12 +1,14 @@
-var numberOfDrums=document.querySelectorAll(".drum").length;
-for(var i=0;i<numberOfDrums;i++)
+const express=require("express");
+const app=express();
+var numberOfDrums=7;
+for(var i=0;i<7;i++)
 {
-  document.querySelectorAll(".drum")[i].addEventListener("click",function (){
+  app.querySelectorAll(".drum")[i].addEventListener("click",function (){
     var buttonInnerHtml = this.innerHTML;
   makeSound(buttonInnerHtml);
   });
 }
-document.addEventListener("keypress",function(event){
+ap.addEventListener("keypress",function(event){
   makeSound(event.key);
 })
 function makeSound(key){
@@ -41,3 +43,6 @@ function makeSound(key){
       break;
 }
 }
+app.listen(process.env.PORT || 4000,function(){
+  console.log("Port running!");
+});
